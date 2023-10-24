@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\GreetingController;
+use GuzzleHttp\Psr7\Message;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('comments/morning', [GreetingController::class, 'morning']);
+
+Route::get('comments/afternoon', [GreetingController::class, 'afternoon']);
+
+Route::get('comments/evening', [GreetingController::class, 'evening']);
+
+Route::get('comments/night', [GreetingController::class, 'night']);
+
+// 自由なメッセージ
+Route::get('comments/freeword/{msg}', [GreetingController::class, 'word']);
+
+// ランダムなメッセージ
+Route::get('comments/random', [GreetingController::class, 'random']);
